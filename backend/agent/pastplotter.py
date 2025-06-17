@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+from statsmodels.tsa.seasonal import seasonal_decompose
+csv_path = "../files/boost.csv"
+def plot_decompose(decompose_result):
+    fig, (ax1,ax2,ax3,ax4) = plt.subplots(4,1,figsize=(12,20))
+    decompose_result.observed.plot(legend=False,ax=ax1,fontsize = 20,grid=True,linewidth = 3)
+    ax1.set_ylabel("Observed",fontsize = 20)
+    decompose_result.trend.plot(legend=False,ax=ax2,fontsize = 20,grid=True,linewidth = 3)
+    ax2.set_ylabel("Trend",fontsize = 20)
+    decompose_result.seasonal.plot(legend=False,ax=ax3,fontsize = 20,grid=True,linewidth = 3)
+    ax3.set_ylabel("Seasonal",fontsize = 20)
+    decompose_result.resid.plot(legend=False,ax=ax4,fontsize = 20,grid=True,linewidth = 3)
+    ax4.set_ylabel("Residual",fontsize = 20)
+    plt.savefig("decompose_plot.png", dpi=300, bbox_inches='tight')
+df = pd.read_csv(csv_path, parse_dates=['Month'], index_col='Month')
+decomposition = seasonal_decompose(df['Passengers'], period=12)
+plot_decompose(decomposition)
