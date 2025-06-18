@@ -2,6 +2,7 @@ import pandas as pd
 import torch
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
+from pastplotter import future_plot
 #data preprocessing
 sold_data  = pd.read_csv("../files/boost.csv", parse_dates=['Month'], index_col='Month')
 all_data = sold_data['Passengers'].values.astype(float)
@@ -69,5 +70,9 @@ actual_predictions = scaler.inverse_transform(np.array(test_inputs[train_window:
 print(actual_predictions)
 ##
 x = np.arange(132, 144, 1)
-
-    
+train_df = pd.DataFrame(sold_data['Passengers'][:-train_window])
+actual_df = pd.DataFrame(actual_predictions)
+actual_df.columns = ['passengers']
+new_predict = pd.concat([train_df,actual_df]).reset_index(drop=True)
+##plot the future predictions
+future_plot(x, new_predict, sold_data, train_window)
