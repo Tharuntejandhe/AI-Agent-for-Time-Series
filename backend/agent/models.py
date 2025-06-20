@@ -3,8 +3,10 @@ import torch
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from pastplotter import future_plot
+import matplotlib.pyplot as plt
 #data preprocessing
-sold_data  = pd.read_csv("../files/boost.csv", parse_dates=['Month'], index_col='Month')
+sold_data  = pd.read_csv("../files/boost.csv", parse_dates=['Month'])
+sold_data['Month'] = pd.to_datetime(sold_data['Month'])
 all_data = sold_data['Passengers'].values.astype(float)
 test_data_size = 12
 train_data = all_data[:-test_data_size]
@@ -76,3 +78,33 @@ actual_df.columns = ['passengers']
 new_predict = pd.concat([train_df,actual_df]).reset_index(drop=True)
 ##plot the future predictions
 future_plot(x, new_predict, sold_data, train_window)
+
+##by using prophet model
+from prophet import Prophet
+
+# Rename columns to prepare for modeling (like Prophet or similar)
+sold_data.rename(columns={'Month': 'ds', 'Passengers': 'y'}, inplace=True)
+
+# Optional: If you need year and month separately
+sold_data['year'] = sold_data['ds'].dt.year
+sold_data['month'] = sold_data['ds'].dt.month
+
+# Check final structure
+print(sold_data.head())
+sold_data= sold_data.drop(columns=["year","month"])
+
+from prophet.plot import plot_plotly, plot_components_plotly
+from prophet import Prophet 
+m = Prophet()
+m.fit(sold_data)
+future = m.make_future_dataframe(periods=500)
+forecast = m.predict(future)
+fig2 = m.plot_components(forecast)
+plt.show()
+
+fig1 = plot_plotly(m, forecast)
+fig1.show()  # <-- Required to display plot outside notebooks
+
+# Plot components
+fig2 = plot_components_plotly(m, forecast)
+fig2.show()
