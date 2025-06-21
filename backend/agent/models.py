@@ -101,10 +101,20 @@ future = m.make_future_dataframe(periods=500)
 forecast = m.predict(future)
 fig2 = m.plot_components(forecast)
 plt.show()
+import plotly.io as pio
+pio.renderers.default = "browser"
 
 fig1 = plot_plotly(m, forecast)
 fig1.show()  # <-- Required to display plot outside notebooks
+try:
+    fig1.write_html("forecast.html")
+    print("File saved.")
+except Exception as e:
+    print("Error while saving:", e)
+
+# You can now double-click this file to open it in your browser manually
 
 # Plot components
 fig2 = plot_components_plotly(m, forecast)
 fig2.show()
+
