@@ -1,11 +1,19 @@
+
 import React, { useState } from 'react';
 
-function ProductCard({ image, name, productId, stock }) {
+function ProductCard(props) {
+  // Defensive: destructure and default to empty string/zero
+  const { image = '', name = '', productId = '', stock = 0 } = props || {};
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDetails = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpanded((prev) => !prev);
   };
+
+  // Defensive: only render if name and image are valid
+  if (typeof name !== 'string' || typeof image !== 'string') {
+    return null;
+  }
 
   return (
     <div

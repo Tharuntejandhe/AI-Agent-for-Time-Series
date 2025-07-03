@@ -55,7 +55,18 @@ def get_products():
     db = SessionLocal()
     products = db.query(Product).all()
     db.close()
-    return products
+    # Convert SQLAlchemy objects to dicts for frontend compatibility
+    product_list = [
+        {
+            "id": p.id,
+            "name": p.name,
+            "productId": p.productId,
+            "image": p.image,
+            "stock": p.stock
+        }
+        for p in products
+    ]
+    return product_list
 
 @app.post("/api/products")
 def add_product(product: ProductIn):
@@ -84,7 +95,9 @@ def register_admin(admin: AdminIn):
 @app.api_route("/api/admin/login", methods=["POST"])
 def login_admin(admin: AdminIn):
     db = SessionLocal()
+    print(f"Login attempt: email={admin.email}, password={admin.password}, key={admin.key}")
     db_admin = db.query(Admin).filter(Admin.email == admin.email, Admin.password == admin.password, Admin.key == admin.key).first()
+    print(f"DB result: {db_admin}")
     db.close()
     if db_admin:
         return {"message": "Login successful"}

@@ -29,8 +29,8 @@ const Login = () => {
       if (res.ok) {
         setError('');
         localStorage.setItem('isAdminLoggedIn', 'true');
+        // Redirect to homepage after successful login
         navigate('/');
-        window.location.reload();
       } else {
         const data = await res.json();
         setError(data.detail || 'Invalid credentials or admin key.');

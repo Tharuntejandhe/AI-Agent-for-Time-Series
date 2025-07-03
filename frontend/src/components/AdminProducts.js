@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaEdit } from "react-icons/fa";
 
 const API_URL = 'http://localhost:8000/api/products';
 

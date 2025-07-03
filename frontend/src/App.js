@@ -6,17 +6,16 @@ import Login from './components/Login.js';
 import Register from './components/Register.js';
 import AdminProducts from './components/AdminProducts.js';
 
+
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/admin/products" element={<AdminProducts />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+      </Routes>
     </Router>
   );
 }
