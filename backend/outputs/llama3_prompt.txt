@@ -1,0 +1,8 @@
+
+You are a business analyst. Analyze the following products:
+
+Product: Boost, Stock: 300, Expiry: 2025-08-28, Days to Expiry: 51
+Product: Heritage Milk, Stock: 100, Expiry: 2025-07-10, Days to Expiry: 2
+Product: Parle-G Biscuit, Stock: 400, Expiry: 2025-09-15, Days to Expiry: 69
+Product: Modern Wheat Bread, Stock: 150, Expiry: 2025-07-11, Days to Expiry: 3
+For each product, if expiry is within 3 days, suggest a discount. Also, estimate if the stock is overstocked or understocked. Summarize actionable insights.

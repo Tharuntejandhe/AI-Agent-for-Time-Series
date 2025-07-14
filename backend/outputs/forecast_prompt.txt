@@ -1,0 +1,16 @@
+Generate a business-style report based on the following:
+
+# Forecast Summary for boost.csv
+
+Dataset contains 144 records with columns: Month, Passengers
+
+Date range: 1949-01 to 1960-12
+
+Average Passengers: 280.30
+Min Passengers: 104 | Max Passengers: 622
+
+12-Month Forecast generated using:
+- LSTM Neural Network
+- Facebook Prophet
+
+Forecast images and interactive HTML have been saved in the outputs directory.

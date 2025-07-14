@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
 csv_path = "../files/boost.csv"
+
 def plot_decompose(decompose_result):
     fig, (ax1,ax2,ax3,ax4) = plt.subplots(4,1,figsize=(12,20))
     decompose_result.observed.plot(legend=False,ax=ax1,fontsize = 20,grid=True,linewidth = 3)
@@ -16,6 +17,8 @@ def plot_decompose(decompose_result):
 df = pd.read_csv(csv_path, parse_dates=['Month'], index_col='Month')
 decomposition = seasonal_decompose(df['Passengers'], period=12)
 plot_decompose(decomposition)
+
+
 def future_plot(x,new_predict,df,train_window):
     plt.figure(figsize=(12,5))
     plt.title('Month vs Passenger',fontsize = 20)
@@ -28,3 +31,24 @@ def future_plot(x,new_predict,df,train_window):
     plt.plot(new_predict)
     plt.legend(fontsize=20)
     plt.savefig("future_plot.png", dpi=300, bbox_inches='tight')
+    
+def plot_prophet(m, forecast):
+    fig2 = m.plot_components(forecast)
+    plt.show()
+    from prophet.plot import plot_plotly, plot_components_plotly
+    import plotly.io as pio
+    pio.renderers.default = "browser"
+
+    fig1 = plot_plotly(m, forecast)
+    fig1.show()  # <-- Required to display plot outside notebooks
+    try:
+        fig1.write_html("forecast.html")
+        print("File saved.")
+    except Exception as e:
+        print("Error while saving:", e)
+
+    # You can now double-click this file to open it in your browser manually
+
+    # Plot components
+    fig2 = plot_components_plotly(m, forecast)
+    fig2.show()

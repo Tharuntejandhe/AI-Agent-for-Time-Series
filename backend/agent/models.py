@@ -2,10 +2,11 @@ import pandas as pd
 import torch
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
-from pastplotter import future_plot
+from pastplotter import future_plot, plot_prophet
+from db import get_past_data
 import matplotlib.pyplot as plt
 #data preprocessing
-sold_data  = pd.read_csv("../files/boost.csv", parse_dates=['Month'])
+sold_data  = get_past_data()
 sold_data['Month'] = pd.to_datetime(sold_data['Month'])
 all_data = sold_data['Passengers'].values.astype(float)
 test_data_size = 12
@@ -93,28 +94,10 @@ sold_data['month'] = sold_data['ds'].dt.month
 print(sold_data.head())
 sold_data= sold_data.drop(columns=["year","month"])
 
-from prophet.plot import plot_plotly, plot_components_plotly
+
 from prophet import Prophet 
 m = Prophet()
 m.fit(sold_data)
 future = m.make_future_dataframe(periods=500)
 forecast = m.predict(future)
-fig2 = m.plot_components(forecast)
-plt.show()
-import plotly.io as pio
-pio.renderers.default = "browser"
-
-fig1 = plot_plotly(m, forecast)
-fig1.show()  # <-- Required to display plot outside notebooks
-try:
-    fig1.write_html("forecast.html")
-    print("File saved.")
-except Exception as e:
-    print("Error while saving:", e)
-
-# You can now double-click this file to open it in your browser manually
-
-# Plot components
-fig2 = plot_components_plotly(m, forecast)
-fig2.show()
-
+plot_prophet(m, forecast)
