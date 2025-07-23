@@ -58,7 +58,7 @@ Predictions from all three models are averaged to enhance accuracy and stability
 
 ## 🗂 Project Architecture
 
-astro-ai/
+**astro-ai/
 ├── frontend/ # React.js frontend interface
 │ └── build/ # Production build (copied to backend)
 ├── backend/ # FastAPI backend
@@ -68,16 +68,19 @@ astro-ai/
 │ ├── utils/ # Urgency scores, discount logic, PDF generation
 │ └── build/ # Frontend build served from backend
 ├── requirements.txt # Python backend dependencies
-├── README.md # You're here!
+├── README.md # You're here!**
+
+--- 
+
 ## Frontend run
-cd frontend
-npm install
-npm run build
-Copy-Item -Recurse -Force "../frontend/build" "../backend/build"
+- **cd frontend**
+- **npm install**
+- **npm run build**
+- **Copy-Item -Recurse -Force "../frontend/build" "../backend/build"**
 
 ## Backend run
-cd ../backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+- **cd ../backend**
+- **pip install -r requirements.txt**
+- **uvicorn main:app --reload**
 ## Ollam run
-ollama run llama3
+- **ollama run llama3**
