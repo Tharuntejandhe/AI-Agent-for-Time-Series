@@ -3,6 +3,10 @@
 Astro AI is a smart AI-agent-based inventory management system designed to transform raw stock data into **money-saving, actionable insights**. Developed as part of **Walmart Sparkathon 2025**, the project targets major retail pain points such as **overstocking, understocking,** and **product expiry**—challenges that directly affect financial performance.
 
 With built-in forecasting, AI-powered recommendations, PDF reporting, and **offline LLM support using LLaMA 3**, Astro AI enables smarter decision-making for retail operations.
+### 📺 Demo Video
+
+Watch the full demo of **Astro AI** in action here:  
+👉 [https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://youtu.be/P-dQ7ClPpIE?si=DMcAGhc1i7-GjYgU)
 
 ---
 
