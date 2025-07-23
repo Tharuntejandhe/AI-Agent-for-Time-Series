@@ -58,7 +58,7 @@ Predictions from all three models are averaged to enhance accuracy and stability
 
 ## 🗂 Project Architecture
 
-<pre><code>```yaml astro-ai/ ├── frontend/ # React.js frontend interface │ └── build/ # Production build (copied to backend) ├── backend/ # FastAPI backend │ ├── main.py # FastAPI entry point │ ├── models/ # ML models for forecasting │ ├── llama3/ # LLaMA 3 chat integration │ ├── utils/ # Urgency scores, discount logic, PDF generation │ └── build/ # Frontend build served from backend ├── requirements.txt # Python backend dependencies ├── README.md # You're here! ``` </code></pre>
+<pre><code>``` astro-ai/ ├── frontend/ # React.js frontend interface │ └── build/ # Production build (copied to backend) ├── backend/ # FastAPI backend │ ├── main.py # FastAPI entry point │ ├── models/ # ML models for forecasting │ ├── llama3/ # LLaMA 3 chat integration │ ├── utils/ # Urgency scores, discount logic, PDF generation │ └── build/ # Frontend build served from backend ├── requirements.txt # Python backend dependencies ├── README.md # You're here! ``` </code></pre>
 --- 
 
 ## Frontend run
