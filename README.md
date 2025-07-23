@@ -6,7 +6,7 @@ With built-in forecasting, AI-powered recommendations, PDF reporting, and **offl
 ### 📺 Demo Video
 
 Watch the full demo of **Astro AI** in action here:  
-👉 [https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://youtu.be/P-dQ7ClPpIE?si=DMcAGhc1i7-GjYgU)
+👉 [Astro AI YouTube](https://youtu.be/P-dQ7ClPpIE?si=DMcAGhc1i7-GjYgU)
 
 ---
 
